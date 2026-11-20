@@ -12,8 +12,6 @@ import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.automirrored.filled.ViewList
 import androidx.compose.material.icons.filled.GridView
 import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.Sort
-import androidx.compose.material.icons.filled.ViewList
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -26,13 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
-import com.example.bookflow.ui.theme.SurfaceSecondary
 
 
 @Composable
@@ -54,13 +46,13 @@ fun LibraryControls(
             Text(
                 text = stringResource(R.string.your_books_text),
                 style = MaterialTheme.typography.titleMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Box(
                 modifier = Modifier
                     .background(
-                        color = StatusCardBackground,
+                        color = MaterialTheme.colorScheme.secondaryContainer,
                         shape = RoundedCornerShape(12.dp)
                     )
                     .padding(horizontal = 10.dp, vertical = 4.dp),
@@ -69,7 +61,7 @@ fun LibraryControls(
                 Text(
                     text = totalBooks.toString(),
                     style = MaterialTheme.typography.labelMedium,
-                    color = PrimaryGreen
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
         }
@@ -81,26 +73,26 @@ fun LibraryControls(
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.Sort,
                 contentDescription = null,
-                tint = SecondaryText
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Text(
                 text = stringResource(R.string.recent),
                 style = MaterialTheme.typography.labelLarge,
-                color = SecondaryText
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Icon(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = null,
-                tint = SecondaryText
+                tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
         Row(
             modifier = Modifier
                 .background(
-                    color = SurfaceSecondary,
+                    color = MaterialTheme.colorScheme.surfaceContainer,
                     shape = RoundedCornerShape(12.dp)
                 )
                 .padding(4.dp)
@@ -109,14 +101,14 @@ fun LibraryControls(
                 onClick = { onViewModeChange(true) },
                 modifier = Modifier
                     .background(
-                        color = if (isGridView) Background else Color.Transparent,
+                        color = if (isGridView) MaterialTheme.colorScheme.background else Color.Transparent,
                         shape = RoundedCornerShape(8.dp)
                     )
             ) {
                 Icon(
                     imageVector = Icons.Default.GridView,
                     contentDescription = stringResource(R.string.grid_view),
-                    tint = if (isGridView) PrimaryGreen else SecondaryText
+                    tint = if (isGridView) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 
@@ -124,14 +116,14 @@ fun LibraryControls(
                 onClick = { onViewModeChange(false) },
                 modifier = Modifier
                     .background(
-                        color = if (!isGridView) Background else Color.Transparent,
+                        color = if (!isGridView) MaterialTheme.colorScheme.background else Color.Transparent,
                         shape = RoundedCornerShape(8.dp)
                     )
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ViewList,
                     contentDescription = stringResource(R.string.list_view),
-                    tint = if (!isGridView) PrimaryGreen else SecondaryText
+                    tint = if (!isGridView) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
@@ -142,7 +134,7 @@ fun LibraryControls(
 @Preview(showBackground = true)
 @Composable
 fun LibraryControlsPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         LibraryControls(
             totalBooks = 4,
             isGridView = true,

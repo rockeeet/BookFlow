@@ -29,10 +29,6 @@ import com.example.bookflow.data.model.Book
 import com.example.bookflow.data.model.ReadingStatus
 import com.example.bookflow.ui.components.BookFlowTopAppBar
 import com.example.bookflow.ui.navigation.NavigationDestination
-import com.example.bookflow.ui.theme.Background
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 
 object ReadingProgressDestination : NavigationDestination {
     override val route = "reading_progress/{bookId}"
@@ -81,7 +77,7 @@ fun ReadingProgressScreen(
             Button(
                 onClick = onNavigateBack,
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = PrimaryGreen
+                    containerColor = MaterialTheme.colorScheme.primary
                 )
             ) {
                 Text(stringResource(R.string.back_button))
@@ -95,7 +91,7 @@ fun ReadingProgressScreen(
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
-        containerColor = Background,
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             BookFlowTopAppBar(
                 title = stringResource(R.string.reading_progress),
@@ -119,8 +115,8 @@ fun ReadingProgressScreen(
                         .height(52.dp),
                     shape = RoundedCornerShape(14.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = PrimaryGreen,
-                        contentColor = Background
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        contentColor = MaterialTheme.colorScheme.background
                     )
                 ) {
                     Text(
@@ -137,7 +133,7 @@ fun ReadingProgressScreen(
                         .height(48.dp),
                     shape = RoundedCornerShape(14.dp),
                     colors = ButtonDefaults.outlinedButtonColors(
-                        contentColor = PrimaryText
+                        contentColor = MaterialTheme.colorScheme.onSurface
                     )
                 ) {
                     Text(
@@ -182,7 +178,7 @@ fun ReadingProgressScreen(
                 Text(
                     text = stringResource(R.string.progress_cannot_exceed_total),
                     style = MaterialTheme.typography.bodySmall,
-                    color = SecondaryText
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
 

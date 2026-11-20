@@ -35,10 +35,6 @@ import coil.compose.AsyncImage
 import com.example.bookflow.R
 import com.example.bookflow.data.model.SearchResult
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.DividerColor
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 
 @Composable
 fun DiscoverResultItem(
@@ -73,7 +69,7 @@ fun DiscoverResultItem(
                         text = stringResource(R.string.book_cover_placeholder),
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.labelSmall,
-                        color = SecondaryText,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -87,7 +83,7 @@ fun DiscoverResultItem(
                 Text(
                     text = result.title,
                     style = MaterialTheme.typography.titleMedium,
-                    color = PrimaryText,
+                    color = MaterialTheme.colorScheme.onSurface,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -100,7 +96,7 @@ fun DiscoverResultItem(
                     Text(
                         text = result.author,
                         style = MaterialTheme.typography.bodySmall,
-                        color = SecondaryText,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -112,7 +108,7 @@ fun DiscoverResultItem(
                                 year
                             ),
                             style = MaterialTheme.typography.labelSmall,
-                            color = SecondaryText
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
@@ -127,7 +123,7 @@ fun DiscoverResultItem(
                     modifier = Modifier
                         .size(36.dp)
                         .background(
-                            color = PrimaryGreen,
+                            color = MaterialTheme.colorScheme.primary,
                             shape = CircleShape
                         ),
                     contentAlignment = Alignment.Center
@@ -151,7 +147,7 @@ fun DiscoverResultItem(
 
         HorizontalDivider(
             modifier = Modifier.padding(start = 100.dp),
-            color = DividerColor,
+            color = MaterialTheme.colorScheme.outlineVariant,
             thickness = 1.dp
         )
     }
@@ -160,7 +156,7 @@ fun DiscoverResultItem(
 @Preview(showBackground = true)
 @Composable
 fun DiscoverResultItemPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         DiscoverResultItem(
             result = SearchResult(
                 id = "1",

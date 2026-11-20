@@ -30,9 +30,7 @@ import com.example.bookflow.data.model.Book
 import com.example.bookflow.data.model.ReadingStatus
 import com.example.bookflow.ui.components.BookFlowTopAppBar
 import com.example.bookflow.ui.navigation.NavigationDestination
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
 
 object LibraryDestination : NavigationDestination {
     override val route = "library"
@@ -62,7 +60,7 @@ fun LibraryScreen(
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = stringResource(R.string.search_button),
-                            tint = PrimaryGreen
+                            tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
@@ -73,13 +71,13 @@ fun LibraryScreen(
             FloatingActionButton(
                 onClick = onAddBook,
                 shape = CircleShape,
-                containerColor = PrimaryGreen,
-                contentColor = Background
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.background
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = stringResource(R.string.add_book),
-                    tint = Background
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
         }
@@ -177,7 +175,7 @@ fun LibraryScreenPreview() {
         )
     )
 
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         LibraryScreen(
             uiState = LibraryUiState(
                 books = previewBooks,

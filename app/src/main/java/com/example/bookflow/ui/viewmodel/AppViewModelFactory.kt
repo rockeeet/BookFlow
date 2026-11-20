@@ -6,16 +6,20 @@ import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import com.example.bookflow.data.repository.BookRepository
 import com.example.bookflow.data.repository.DiscoverRepository
+import com.example.bookflow.data.repository.SettingsRepository
 import com.example.bookflow.ui.addbook.AddBookViewModel
 import com.example.bookflow.ui.details.BookDetailsViewModel
 import com.example.bookflow.ui.discover.DiscoverViewModel
 import com.example.bookflow.ui.editbook.EditBookViewModel
 import com.example.bookflow.ui.library.LibraryViewModel
 import com.example.bookflow.ui.progress.ReadingProgressViewModel
+import com.example.bookflow.ui.settings.SettingsViewModel
+import com.example.bookflow.ui.statistics.StatisticsViewModel
 
 class AppViewModelFactory(
     private val bookRepository: BookRepository,
-    private val discoverRepository: DiscoverRepository
+    private val discoverRepository: DiscoverRepository,
+    private val settingsRepository: SettingsRepository
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(
@@ -36,6 +40,14 @@ class AppViewModelFactory(
                     discoverRepository = discoverRepository,
                     bookRepository = bookRepository
                 ) as T
+            }
+
+            modelClass.isAssignableFrom(StatisticsViewModel::class.java) -> {
+                StatisticsViewModel(bookRepository) as T
+            }
+
+            modelClass.isAssignableFrom(SettingsViewModel::class.java) -> {
+                SettingsViewModel(settingsRepository) as T
             }
 
             else -> throw IllegalArgumentException(

@@ -23,11 +23,9 @@ class MainActivity : ComponentActivity() {
         val appContainer = (application as BookFlowApplication).container
 
         setContent {
-            BookFlowTheme {
-                BookFlowApp(
-                    appViewModelFactory = appContainer.appViewModelFactory
-                )
-            }
+            BookFlowApp(
+                appViewModelFactory = appContainer.appViewModelFactory
+            )
         }
     }
 }

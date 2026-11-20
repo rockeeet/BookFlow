@@ -8,6 +8,8 @@ import com.example.bookflow.data.repository.BookRepositoryImpl
 import com.example.bookflow.data.remote.OpenLibraryApiClient
 import com.example.bookflow.data.repository.DiscoverRepository
 import com.example.bookflow.data.repository.DiscoverRepositoryImpl
+import com.example.bookflow.data.repository.SettingsRepository
+import com.example.bookflow.data.repository.SettingsRepositoryImpl
 
 class AppContainer(context: Context) {
 
@@ -21,10 +23,15 @@ class AppContainer(context: Context) {
         DiscoverRepositoryImpl(OpenLibraryApiClient.api)
     }
 
+    private val settingsRepository: SettingsRepository by lazy {
+        SettingsRepositoryImpl(context)
+    }
+
     val appViewModelFactory: AppViewModelFactory by lazy {
         AppViewModelFactory(
             bookRepository = bookRepository,
-            discoverRepository = discoverRepository
+            discoverRepository = discoverRepository,
+            settingsRepository = settingsRepository
         )
     }
 }

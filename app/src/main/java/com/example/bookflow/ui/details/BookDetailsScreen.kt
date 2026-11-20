@@ -48,9 +48,7 @@ import com.example.bookflow.data.model.ReadingStatus
 import com.example.bookflow.data.model.SearchResult
 import com.example.bookflow.ui.components.BookFlowTopAppBar
 import com.example.bookflow.ui.navigation.NavigationDestination
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
 
 object BookDetailsDestination : NavigationDestination {
     override val route = "book_details/{bookId}"
@@ -79,7 +77,7 @@ fun BookDetailsScreen(
 
     Scaffold(
         modifier = modifier.fillMaxSize(),
-        containerColor = Background,
+        containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             BookFlowTopAppBar(
                 title = stringResource(R.string.book_details),
@@ -143,7 +141,7 @@ fun BookDetailsScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Background)
+                    .background(MaterialTheme.colorScheme.background)
                     .padding(horizontal = 24.dp, vertical = 16.dp)
             ) {
                 Button(
@@ -311,7 +309,7 @@ fun BookDetailsRoute(
                 Button(
                     onClick = onBackClick,
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = PrimaryGreen
+                        containerColor = MaterialTheme.colorScheme.primary
                     )
                 ) {
                     Text(stringResource(R.string.back_button))
@@ -339,7 +337,7 @@ fun BookDetailsRoute(
 @Preview(showBackground = true, widthDp = 412, heightDp = 892)
 @Composable
 private fun BookDetailsScreenPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         BookDetailsScreen(
             uiState = BookDetailsUiState(
                 book = Book(

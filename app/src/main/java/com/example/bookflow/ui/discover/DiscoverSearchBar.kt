@@ -24,12 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.SurfaceSecondary
 
 @Composable
 fun DiscoverSearchBar(
@@ -50,30 +45,30 @@ fun DiscoverSearchBar(
             singleLine = true,
             shape = RoundedCornerShape(14.dp),
             textStyle = MaterialTheme.typography.bodyMedium.copy(
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             ),
             placeholder = {
                 Text(
                     text = stringResource(R.string.search_hint),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = SecondaryText
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             },
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = SurfaceSecondary,
-                focusedContainerColor = SurfaceSecondary,
-                disabledContainerColor = SurfaceSecondary,
+                unfocusedContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+                focusedContainerColor = MaterialTheme.colorScheme.surfaceContainer,
+                disabledContainerColor = MaterialTheme.colorScheme.surfaceContainer,
                 unfocusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
                 focusedIndicatorColor = androidx.compose.ui.graphics.Color.Transparent,
-                cursorColor = PrimaryGreen,
-                focusedTextColor = PrimaryText,
-                unfocusedTextColor = PrimaryText
+                cursorColor = MaterialTheme.colorScheme.primary,
+                focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                unfocusedTextColor = MaterialTheme.colorScheme.onSurface
             ),
             leadingIcon = {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = null,
-                    tint = SecondaryText
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             },
             trailingIcon = {
@@ -82,7 +77,7 @@ fun DiscoverSearchBar(
                         Icon(
                             imageVector = Icons.Default.Close,
                             contentDescription = stringResource(R.string.clear_search),
-                            tint = SecondaryText
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 }
@@ -94,12 +89,12 @@ fun DiscoverSearchBar(
             modifier = Modifier
                 .size(52.dp)
                 .clip(RoundedCornerShape(14.dp))
-                .background(PrimaryGreen)
+                .background(MaterialTheme.colorScheme.primary)
         ) {
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = stringResource(R.string.search_button),
-                tint = Background
+                tint = MaterialTheme.colorScheme.background
             )
         }
     }
@@ -108,7 +103,7 @@ fun DiscoverSearchBar(
 @Preview(showBackground = true)
 @Composable
 fun DiscoverSearchBarPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         DiscoverSearchBar(
             query = "Matt Haig",
             onQueryChange = {},

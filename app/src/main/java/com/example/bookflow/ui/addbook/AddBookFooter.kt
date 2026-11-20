@@ -12,13 +12,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.bookflow.R
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
 
 @Composable
 fun AddBookFooter(
@@ -45,10 +41,10 @@ fun AddBookFooter(
                 .height(52.dp),
             shape = RoundedCornerShape(14.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = PrimaryGreen,
-                contentColor = Background,
-                disabledContainerColor = PrimaryGreen.copy(alpha = 0.5f),
-                disabledContentColor = Background
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.background,
+                disabledContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.5f),
+                disabledContentColor = MaterialTheme.colorScheme.background
             )
         ) {
             Text(
@@ -62,7 +58,7 @@ fun AddBookFooter(
 @Preview(showBackground = true)
 @Composable
 private fun AddBookFooterPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         AddBookFooter(
             onSaveClick = {}
         )

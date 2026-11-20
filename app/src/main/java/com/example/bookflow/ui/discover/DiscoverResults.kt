@@ -15,8 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
 import com.example.bookflow.data.model.SearchResult
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 
 @Composable
 fun DiscoverResultsHeader(
@@ -30,13 +28,13 @@ fun DiscoverResultsHeader(
         Text(
             text = stringResource(R.string.search_results),
             style = MaterialTheme.typography.titleLarge,
-            color = PrimaryText
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         Text(
             text = stringResource(R.string.top_matches),
             style = MaterialTheme.typography.labelMedium,
-            color = SecondaryText
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

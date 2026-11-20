@@ -27,7 +27,6 @@ import com.example.bookflow.data.model.SearchResult
 import com.example.bookflow.data.model.SearchType
 import com.example.bookflow.ui.components.BookFlowTopAppBar
 import com.example.bookflow.ui.navigation.NavigationDestination
-import com.example.bookflow.ui.theme.SecondaryText
 
 object DiscoverDestination : NavigationDestination {
     override val route = "discover"
@@ -159,7 +158,7 @@ fun OpenLibraryAttribution(
         Text(
             text = stringResource(R.string.open_library_attribution),
             style = MaterialTheme.typography.labelSmall,
-            color = SecondaryText
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }

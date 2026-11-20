@@ -1,6 +1,5 @@
 package com.example.bookflow.ui.statistics
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,27 +18,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.ProgressTrackColor
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
-import com.example.bookflow.ui.theme.SurfaceSecondary
 
 @Composable
 fun ReadingBreakdown(
-    totalBooks: Int,
     wantToReadBooks: Int,
     currentlyReadingBooks: Int,
     completedBooks: Int,
+    completedProgress: Float,
+    completedProgressPercent: Int,
+    wantToReadProgress: Float,
+    wantToReadProgressPercent: Int,
+    currentlyReadingProgress: Float,
+    currentlyReadingProgressPercent: Int,
     modifier: Modifier = Modifier
 ) {
-    val completedProgress = if (totalBooks > 0) {
-        completedBooks.toFloat() / totalBooks
-    } else {
-        0f
-    }
-
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(20.dp)
@@ -48,12 +40,12 @@ fun ReadingBreakdown(
             Text(
                 text = stringResource(R.string.reading_progress),
                 style = MaterialTheme.typography.titleMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Surface(
                 shape = RoundedCornerShape(14.dp),
-                color = StatusCardBackground
+                color = MaterialTheme.colorScheme.secondaryContainer
             ) {
                 Column(
                     modifier = Modifier
@@ -69,13 +61,13 @@ fun ReadingBreakdown(
                         Text(
                             text = stringResource(R.string.books_completed),
                             style = MaterialTheme.typography.bodyMedium,
-                            color = SecondaryText
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
 
                         Text(
-                            text = "${(completedProgress * 100).toInt()}%",
+                            text = "$completedProgressPercent%",
                             style = MaterialTheme.typography.titleLarge,
-                            color = PrimaryGreen
+                            color = MaterialTheme.colorScheme.primary
                         )
                     }
 
@@ -85,8 +77,8 @@ fun ReadingBreakdown(
                             .fillMaxWidth()
                             .height(8.dp)
                             .clip(RoundedCornerShape(50)),
-                        color = PrimaryGreen,
-                        trackColor = ProgressTrackColor
+                        color = MaterialTheme.colorScheme.primary,
+                        trackColor = MaterialTheme.colorScheme.surfaceVariant
                     )
                 }
             }
@@ -96,25 +88,28 @@ fun ReadingBreakdown(
             Text(
                 text = stringResource(R.string.reading_breakdown),
                 style = MaterialTheme.typography.titleMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             BreakdownItem(
                 title = stringResource(R.string.want_to_read),
                 count = wantToReadBooks,
-                totalBooks = totalBooks
+                progress = wantToReadProgress,
+                percentage = wantToReadProgressPercent
             )
 
             BreakdownItem(
                 title = stringResource(R.string.currently_reading),
                 count = currentlyReadingBooks,
-                totalBooks = totalBooks
+                progress = currentlyReadingProgress,
+                percentage = currentlyReadingProgressPercent
             )
 
             BreakdownItem(
                 title = stringResource(R.string.completed),
                 count = completedBooks,
-                totalBooks = totalBooks
+                progress = completedProgress,
+                percentage = completedProgressPercent
             )
         }
     }
@@ -124,14 +119,9 @@ fun ReadingBreakdown(
 private fun BreakdownItem(
     title: String,
     count: Int,
-    totalBooks: Int
+    progress: Float,
+    percentage: Int
 ) {
-    val progress = if (totalBooks > 0) {
-        count.toFloat() / totalBooks
-    } else {
-        0f
-    }
-
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -141,13 +131,13 @@ private fun BreakdownItem(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Text(
-                text = count.toString(),
+                text = "$count · $percentage%",
                 style = MaterialTheme.typography.labelLarge,
-                color = SecondaryText
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 
@@ -157,8 +147,8 @@ private fun BreakdownItem(
                 .fillMaxWidth()
                 .height(7.dp)
                 .clip(RoundedCornerShape(50)),
-            color = PrimaryGreen,
-            trackColor = ProgressTrackColor
+            color = MaterialTheme.colorScheme.primary,
+            trackColor = MaterialTheme.colorScheme.surfaceVariant
         )
     }
 }

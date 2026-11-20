@@ -19,8 +19,6 @@ import com.example.bookflow.ui.discover.DiscoverDestination
 import com.example.bookflow.ui.library.LibraryDestination
 import com.example.bookflow.ui.settings.SettingsDestination
 import com.example.bookflow.ui.statistics.StatisticsDestination
-import com.example.bookflow.ui.theme.Background
-import com.example.bookflow.ui.theme.PrimaryGreen
 
 private data class BottomNavItem(
     val destination: NavigationDestination,
@@ -40,8 +38,8 @@ fun BookFlowBottomBar(
     )
 
     NavigationBar(
-        containerColor = Background,
-        contentColor = PrimaryGreen,
+        containerColor = MaterialTheme.colorScheme.background,
+        contentColor = MaterialTheme.colorScheme.primary,
         tonalElevation = 0.dp
     ) {
         items.forEach { item ->
@@ -66,9 +64,9 @@ fun BookFlowBottomBar(
                 },
                 alwaysShowLabel = true,
                 colors = NavigationBarItemDefaults.colors(
-                    selectedIconColor = PrimaryGreen,
-                    selectedTextColor = PrimaryGreen,
-                    indicatorColor = PrimaryGreen.copy(alpha = 0.12f),
+                    selectedIconColor = MaterialTheme.colorScheme.primary,
+                    selectedTextColor = MaterialTheme.colorScheme.primary,
+                    indicatorColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.12f),
                     unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant
                 )

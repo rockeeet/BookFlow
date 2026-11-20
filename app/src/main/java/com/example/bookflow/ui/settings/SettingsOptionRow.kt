@@ -14,9 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 
 @Composable
 fun SettingsOptionRow(
@@ -41,14 +38,14 @@ fun SettingsOptionRow(
             Text(
                 text = title,
                 style = MaterialTheme.typography.bodyMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             if (description != null) {
                 Text(
                     text = description,
                     style = MaterialTheme.typography.bodySmall,
-                    color = SecondaryText
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
@@ -57,7 +54,7 @@ fun SettingsOptionRow(
             selected = selected,
             onClick = onClick,
             colors = RadioButtonDefaults.colors(
-                selectedColor = PrimaryGreen
+                selectedColor = MaterialTheme.colorScheme.primary
             )
         )
     }

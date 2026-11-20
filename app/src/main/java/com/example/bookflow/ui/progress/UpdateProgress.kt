@@ -23,8 +23,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 
 @Composable
 fun UpdateProgress(
@@ -43,13 +41,13 @@ fun UpdateProgress(
             Text(
                 text = stringResource(R.string.update_progress),
                 style = MaterialTheme.typography.titleMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Text(
                 text = stringResource(R.string.update_progress_hint),
                 style = MaterialTheme.typography.bodySmall,
-                color = SecondaryText
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
 

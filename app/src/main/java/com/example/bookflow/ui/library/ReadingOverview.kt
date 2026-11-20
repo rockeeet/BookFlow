@@ -21,10 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.DividerColor
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
 
 
 @Composable
@@ -38,7 +34,7 @@ fun ReadingOverview(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = StatusCardBackground
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
         )
     ) {
         Column(
@@ -50,7 +46,7 @@ fun ReadingOverview(
             Text(
                 text = "Your reading journey",
                 style = MaterialTheme.typography.titleLarge,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Row(
@@ -66,7 +62,7 @@ fun ReadingOverview(
                 )
 
                 VerticalDivider(
-                    color = DividerColor
+                    color = MaterialTheme.colorScheme.outlineVariant
                 )
 
                 OverviewItem(
@@ -76,7 +72,7 @@ fun ReadingOverview(
                 )
 
                 VerticalDivider(
-                    color = DividerColor
+                    color = MaterialTheme.colorScheme.outlineVariant
                 )
 
                 OverviewItem(
@@ -103,13 +99,13 @@ private fun OverviewItem(
         Text(
             text = value.toString(),
             style = MaterialTheme.typography.headlineMedium,
-            color = PrimaryText
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         Text(
             text = label,
             style = MaterialTheme.typography.labelSmall,
-            color = SecondaryText
+            color = MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }
@@ -118,7 +114,7 @@ private fun OverviewItem(
 @Preview(showBackground = true)
 @Composable
 fun ReadingOverviewPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         ReadingOverview(4, 2, 12)
     }
 }

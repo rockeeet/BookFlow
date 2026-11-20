@@ -19,7 +19,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,14 +27,7 @@ import coil.compose.AsyncImage
 import com.example.bookflow.R
 import com.example.bookflow.data.model.Book
 import com.example.bookflow.data.model.ReadingStatus
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.CoverBackground
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.ProgressTrackColor
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
 import kotlin.math.roundToInt
 
 
@@ -50,7 +42,7 @@ fun BookCard(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = Background
+            containerColor = MaterialTheme.colorScheme.background
         )
     ) {
         Column {
@@ -58,7 +50,7 @@ fun BookCard(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
-                    .background(CoverBackground),
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
                 contentAlignment = Alignment.Center
             ) {
                 if (book.coverUrl != null) {
@@ -72,7 +64,7 @@ fun BookCard(
                     Text(
                         text = stringResource(R.string.book_cover_placeholder),
                         style = MaterialTheme.typography.bodySmall,
-                        color = SecondaryText
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
@@ -84,24 +76,24 @@ fun BookCard(
                 Text(
                     text = book.title,
                     style = MaterialTheme.typography.titleMedium,
-                    color = PrimaryText,
+                    color = MaterialTheme.colorScheme.onSurface,
                     maxLines = 2
                 )
 
                 Text(
                     text = book.author,
                     style = MaterialTheme.typography.bodySmall,
-                    color = SecondaryText,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     maxLines = 1
                 )
 
                 Text(
                     text = book.status.toDisplayName(),
                     style = MaterialTheme.typography.labelSmall,
-                    color = PrimaryText,
+                    color = MaterialTheme.colorScheme.onSurface,
                     modifier = Modifier
                         .background(
-                            color = StatusCardBackground,
+                            color = MaterialTheme.colorScheme.secondaryContainer,
                             shape = RoundedCornerShape(8.dp)
                         )
                         .padding(horizontal = 8.dp, vertical = 4.dp)
@@ -114,14 +106,14 @@ fun BookCard(
                         LinearProgressIndicator(
                             progress = { book.progress },
                             modifier = Modifier.fillMaxWidth(),
-                            color = PrimaryGreen,
-                            trackColor = ProgressTrackColor
+                            color = MaterialTheme.colorScheme.primary,
+                            trackColor = MaterialTheme.colorScheme.surfaceVariant
                         )
 
                         Text(
                             text = "${(book.progress * 100).roundToInt()}% read",
                             style = MaterialTheme.typography.labelSmall,
-                            color = SecondaryText
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
                 } else {
@@ -144,7 +136,7 @@ private fun ReadingStatus.toDisplayName(): String {
 @Preview(showBackground = true)
 @Composable
 fun BookCardPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         BookCard(
             book = Book(
                 id = 1,

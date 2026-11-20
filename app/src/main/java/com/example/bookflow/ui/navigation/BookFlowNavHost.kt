@@ -1,6 +1,5 @@
 package com.example.bookflow.ui.navigation
 
-import android.R.attr.type
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.ViewModelProvider
@@ -9,9 +8,6 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.bookflow.data.model.AppThemeMode
-import com.example.bookflow.data.model.BookSortOrder
-import com.example.bookflow.data.model.LibraryLayout
 import com.example.bookflow.data.model.SearchResult
 import com.example.bookflow.ui.addbook.AddBookDestination
 import com.example.bookflow.ui.addbook.AddBookRoute
@@ -19,18 +15,16 @@ import com.example.bookflow.ui.details.BookDetailsDestination
 import com.example.bookflow.ui.details.BookDetailsRoute
 import com.example.bookflow.ui.discover.DiscoverDestination
 import com.example.bookflow.ui.discover.DiscoverRoute
-import com.example.bookflow.ui.discover.DiscoverScreen
 import com.example.bookflow.ui.editbook.EditBookDestination
 import com.example.bookflow.ui.editbook.EditBookRoute
 import com.example.bookflow.ui.library.LibraryDestination
 import com.example.bookflow.ui.library.LibraryRoute
-import com.example.bookflow.ui.library.LibraryScreen
 import com.example.bookflow.ui.progress.ReadingProgressDestination
 import com.example.bookflow.ui.progress.ReadingProgressRoute
 import com.example.bookflow.ui.settings.SettingsDestination
-import com.example.bookflow.ui.settings.SettingsScreen
+import com.example.bookflow.ui.settings.SettingsRoute
 import com.example.bookflow.ui.statistics.StatisticsDestination
-import com.example.bookflow.ui.statistics.StatisticsScreen
+import com.example.bookflow.ui.statistics.StatisticsRoute
 
 @Composable
 fun BookFlowNavHost(
@@ -74,21 +68,17 @@ fun BookFlowNavHost(
         }
 
         composable(route = StatisticsDestination.route) {
-            StatisticsScreen(
-                books = emptyList(),
-                onAddBook = {}
+            StatisticsRoute(
+                factory = factory,
+                onAddBook = {
+                    navController.navigate(AddBookDestination.route)
+                }
             )
         }
 
         composable(route = SettingsDestination.route) {
-            SettingsScreen(
-                themeMode = AppThemeMode.SYSTEM,
-                libraryLayout = LibraryLayout.GRID,
-                sortOrder = BookSortOrder.RECENTLY_ADDED,
-                appVersion = "1.0.0",
-                onThemeChange = {},
-                onLibraryLayoutChange = {},
-                onSortOrderChange = {},
+            SettingsRoute(
+                factory = factory,
                 onAboutClick = {},
                 onLicensesClick = {}
             )

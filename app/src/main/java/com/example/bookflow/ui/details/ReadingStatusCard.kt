@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,10 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
 
 @Composable
 fun ReadingStatusCard(
@@ -43,7 +40,7 @@ fun ReadingStatusCard(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(StatusCardBackground)
+            .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -56,22 +53,16 @@ fun ReadingStatusCard(
                 Text(
                     text = stringResource(R.string.reading_status),
                     fontSize = 11.sp,
-                    color = SecondaryText
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
 
                 Text(
                     text = status,
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
-                    color = PrimaryText
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
-
-            Text(
-                text = "›",
-                fontSize = 24.sp,
-                color = SecondaryText
-            )
         }
 
         Row(
@@ -81,14 +72,14 @@ fun ReadingStatusCard(
             Text(
                 text = "Page $currentPage of $totalPages",
                 fontSize = 11.sp,
-                color = SecondaryText
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
 
             Text(
                 text = "${(progress * 100).toInt()}%",
                 fontSize = 11.sp,
                 fontWeight = FontWeight.Medium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
 
@@ -98,7 +89,7 @@ fun ReadingStatusCard(
                 .fillMaxWidth()
                 .height(5.dp)
                 .clip(RoundedCornerShape(50)),
-            color = PrimaryGreen,
+            color = MaterialTheme.colorScheme.primary,
             trackColor = Color(0xFFD5DCCF)
         )
     }

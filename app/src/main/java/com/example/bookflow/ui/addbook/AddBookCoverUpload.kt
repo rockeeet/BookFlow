@@ -1,4 +1,3 @@
-
 package com.example.bookflow.ui.addbook
 
 import androidx.compose.foundation.background
@@ -30,11 +29,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.Background
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
 
 @Composable
 fun AddBookCoverUpload(
@@ -46,7 +40,7 @@ fun AddBookCoverUpload(
         modifier = modifier
             .height(128.dp)
             .clip(RoundedCornerShape(16.dp))
-            .background(StatusCardBackground)
+            .background(MaterialTheme.colorScheme.secondaryContainer)
             .padding(12.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -76,7 +70,7 @@ fun AddBookCoverUpload(
                 Icon(
                     imageVector = Icons.Outlined.AddPhotoAlternate,
                     contentDescription = null,
-                    tint = PrimaryGreen,
+                    tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(28.dp)
                 )
             }
@@ -91,7 +85,7 @@ fun AddBookCoverUpload(
             Text(
                 text = stringResource(R.string.upload_cover_title),
                 style = MaterialTheme.typography.titleMedium,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             TextButton(
@@ -101,7 +95,7 @@ fun AddBookCoverUpload(
                 Icon(
                     imageVector = Icons.Outlined.AddPhotoAlternate,
                     contentDescription = null,
-                    tint = PrimaryGreen,
+                    tint = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.size(18.dp)
                 )
 
@@ -110,14 +104,14 @@ fun AddBookCoverUpload(
                 Text(
                     text = stringResource(R.string.add_cover),
                     style = MaterialTheme.typography.labelMedium,
-                    color = PrimaryGreen
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
 
             Text(
                 text = stringResource(R.string.cover_optional_hint),
                 style = MaterialTheme.typography.labelSmall,
-                color = SecondaryText
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }

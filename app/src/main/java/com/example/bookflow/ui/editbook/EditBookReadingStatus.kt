@@ -20,11 +20,6 @@ import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
 import com.example.bookflow.data.model.ReadingStatus
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.StatusCardBackground
-import com.example.bookflow.ui.theme.SurfaceSecondary
 
 @Composable
 fun EditBookReadingStatus(
@@ -39,7 +34,7 @@ fun EditBookReadingStatus(
         Text(
             text = stringResource(R.string.reading_status),
             style = MaterialTheme.typography.titleMedium,
-            color = PrimaryText
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         Column(
@@ -54,9 +49,9 @@ fun EditBookReadingStatus(
                         .clip(RoundedCornerShape(12.dp))
                         .background(
                             if (isSelected) {
-                                StatusCardBackground
+                                MaterialTheme.colorScheme.secondaryContainer
                             } else {
-                                SurfaceSecondary
+                                MaterialTheme.colorScheme.surfaceContainer
                             }
                         )
                         .clickable {
@@ -72,9 +67,9 @@ fun EditBookReadingStatus(
                         text = status.toDisplayName(),
                         style = MaterialTheme.typography.labelLarge,
                         color = if (isSelected) {
-                            PrimaryGreen
+                            MaterialTheme.colorScheme.primary
                         } else {
-                            SecondaryText
+                            MaterialTheme.colorScheme.onSurfaceVariant
                         }
                     )
                 }
@@ -100,7 +95,7 @@ private fun ReadingStatus.toDisplayName(): String {
 @Preview(showBackground = true)
 @Composable
 private fun EditBookReadingStatusPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         EditBookReadingStatus(
             selectedStatus = ReadingStatus.CURRENTLY_READING,
             onStatusSelected = {},

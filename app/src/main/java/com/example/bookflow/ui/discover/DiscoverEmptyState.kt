@@ -20,10 +20,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.SurfaceSecondary
 
 @Composable
 fun DiscoverEmptyState(
@@ -40,7 +36,7 @@ fun DiscoverEmptyState(
             modifier = Modifier
                 .size(88.dp)
                 .background(
-                    color = SurfaceSecondary,
+                    color = MaterialTheme.colorScheme.surfaceContainer,
                     shape = CircleShape
                 ),
             contentAlignment = Alignment.Center
@@ -48,7 +44,7 @@ fun DiscoverEmptyState(
             Icon(
                 imageVector = Icons.Default.Search,
                 contentDescription = null,
-                tint = PrimaryGreen,
+                tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(42.dp)
             )
         }
@@ -56,7 +52,7 @@ fun DiscoverEmptyState(
         Text(
             text = stringResource(R.string.find_your_book),
             style = MaterialTheme.typography.titleLarge,
-            color = PrimaryText,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 24.dp)
         )
@@ -64,7 +60,7 @@ fun DiscoverEmptyState(
         Text(
             text = stringResource(R.string.explore_millions_of_books),
             style = MaterialTheme.typography.bodyMedium,
-            color = SecondaryText,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 12.dp)
         )

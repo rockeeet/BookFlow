@@ -18,9 +18,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
 import com.example.bookflow.data.model.SearchType
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 
 @Composable
 fun DiscoverNoResultsState(
@@ -37,7 +34,7 @@ fun DiscoverNoResultsState(
         Icon(
             imageVector = Icons.Default.Search,
             contentDescription = null,
-            tint = PrimaryGreen,
+            tint = MaterialTheme.colorScheme.primary,
             modifier = Modifier.size(48.dp)
         )
 
@@ -48,7 +45,7 @@ fun DiscoverNoResultsState(
                 "No books found by this author"
             },
             style = MaterialTheme.typography.titleLarge,
-            color = PrimaryText,
+            color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 20.dp)
         )
@@ -56,7 +53,7 @@ fun DiscoverNoResultsState(
         Text(
             text = stringResource(R.string.try_again),
             style = MaterialTheme.typography.bodyMedium,
-            color = SecondaryText,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(top = 8.dp)
         )

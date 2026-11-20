@@ -21,12 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.bookflow.R
 import com.example.bookflow.data.model.SearchType
-import com.example.bookflow.ui.theme.Background
 import com.example.bookflow.ui.theme.BookFlowTheme
-import com.example.bookflow.ui.theme.PrimaryGreen
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
-import com.example.bookflow.ui.theme.SurfaceSecondary
 
 @Composable
 fun DiscoverSearchOptions(
@@ -42,7 +37,7 @@ fun DiscoverSearchOptions(
         Text(
             text = stringResource(R.string.search_by),
             style = MaterialTheme.typography.bodyMedium,
-            color = PrimaryText
+            color = MaterialTheme.colorScheme.onSurface
         )
 
         DiscoverSearchTypeSelector(
@@ -63,7 +58,7 @@ fun DiscoverSearchTypeSelector(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(12.dp))
-            .background(SurfaceSecondary)
+            .background(MaterialTheme.colorScheme.surfaceContainer)
             .padding(4.dp)
     ) {
         SearchType.entries.forEach { type ->
@@ -75,7 +70,7 @@ fun DiscoverSearchTypeSelector(
                     .height(44.dp)
                     .clip(RoundedCornerShape(8.dp))
                     .background(
-                        color = if (isSelected) Background else Background.copy(alpha = 0f)
+                        color = if (isSelected) MaterialTheme.colorScheme.background else MaterialTheme.colorScheme.background.copy(alpha = 0f)
                     )
                     .clickable { onTypeSelected(type) },
                 contentAlignment = Alignment.Center
@@ -86,7 +81,7 @@ fun DiscoverSearchTypeSelector(
                         SearchType.AUTHOR -> "Author"
                     },
                     style = MaterialTheme.typography.labelLarge,
-                    color = if (isSelected) PrimaryGreen else SecondaryText
+                    color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                 )
             }
         }
@@ -96,7 +91,7 @@ fun DiscoverSearchTypeSelector(
 @Preview(showBackground = true)
 @Composable
 fun DiscoverSearchOptionsPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         DiscoverSearchOptions(
             selectedType = SearchType.TITLE,
             onTypeSelected = {}

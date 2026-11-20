@@ -22,9 +22,6 @@ import coil.compose.AsyncImage
 import com.example.bookflow.R
 import com.example.bookflow.data.model.Book
 import com.example.bookflow.data.model.ReadingStatus
-import com.example.bookflow.ui.theme.CoverBackground
-import com.example.bookflow.ui.theme.PrimaryText
-import com.example.bookflow.ui.theme.SecondaryText
 import com.example.bookflow.ui.theme.BookFlowTheme
 
 @Composable
@@ -44,7 +41,7 @@ fun ReadingProgressBookInfo(
                 .width(76.dp)
                 .height(108.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(CoverBackground),
+                .background(MaterialTheme.colorScheme.surfaceVariant),
             contentScale = ContentScale.Crop
         )
 
@@ -54,13 +51,13 @@ fun ReadingProgressBookInfo(
             Text(
                 text = book.title,
                 style = MaterialTheme.typography.titleLarge,
-                color = PrimaryText
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Text(
                 text = book.author,
                 style = MaterialTheme.typography.bodyMedium,
-                color = SecondaryText
+                color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }
@@ -69,7 +66,7 @@ fun ReadingProgressBookInfo(
 @Preview(showBackground = true)
 @Composable
 private fun ReadingProgressBookInfoPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         ReadingProgressBookInfo(
             book = Book(
                 id = 1,

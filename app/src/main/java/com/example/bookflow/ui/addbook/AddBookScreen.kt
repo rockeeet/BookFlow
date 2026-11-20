@@ -165,7 +165,7 @@ fun AddBookScreen(
 @Preview(showBackground = true)
 @Composable
 private fun AddBookScreenPreview() {
-    BookFlowTheme {
+    BookFlowTheme(darkTheme = false) {
         AddBookScreen(
             uiState = AddBookUiState(),
             onTitleChanged = {},
